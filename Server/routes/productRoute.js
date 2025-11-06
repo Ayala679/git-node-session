@@ -1,0 +1,11 @@
+const express = require("express")
+const { getAllProducts, getProductById, getProductByCategory, addProduct, updateProduct, deleteProduct} = require("../controllers/productController")
+const verifyJWT = require("../middleware/verifyJWT")
+const router = express.Router()
+router.get("/",getAllProducts)
+router.get("/:id",getProductById)
+router.get("/sort/:category",getProductByCategory)
+router.post("/",verifyJWT,addProduct)
+router.put("/",updateProduct)
+router.delete("/:id",verifyJWT,deleteProduct)
+module.exports = router
